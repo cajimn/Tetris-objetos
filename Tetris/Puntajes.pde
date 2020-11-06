@@ -1,5 +1,5 @@
 void niveles() {
-
+  
   if (puntaje >= 300) {
     nivel=2;
     timerPaso=timerPaso-20;

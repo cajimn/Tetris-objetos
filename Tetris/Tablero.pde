@@ -12,25 +12,19 @@ class Tablero {
     pos_inicialY=0;
     columnas=c;
     filas=f;
-    
   }
 
   void display() {
     push();
-    stroke(0);
     strokeWeight(2);
     translate(0, -figure.largo);
     for (int i=0; i < filas; i++) {
-      push();
-      stroke(0);
-      strokeWeight(1);
-      line(0, i*figure.largo, width/2, i*figure.largo);
-      pop();
       for (int j=0; j < columnas; j++) {
         push();
-        stroke(0);
+        stroke(100);
         strokeWeight(1);
-        line(j*figure.ancho, 0, j*figure.ancho, height);
+        line(figure.ancho, i*figure.largo, j*figure.ancho, i*figure.largo);//horizontales
+        line(j*figure.ancho, figure.largo, j*figure.ancho, i*figure.largo);//verticales
         pop();
         if (j == 0 || j == columnas - 1 || i == filas - 1) {
           fill(colores[0]);
@@ -61,9 +55,9 @@ class Tablero {
   void filasCompletas() {
     for (int i = filas - 2; i >= 0; i--) {
       int j = 0;
-      for (j = 1; (j < 11) && (grid.get(i)[j] != 0); j++) {
+      for (j = 1; (j < columnas-1) && (grid.get(i)[j] != 0); j++) {
       }
-      if (j == 11) {
+      if (j == columnas-1) {
         puntaje += 50;
         grid.remove(i);
         grid.add(0, new color[columnas]);

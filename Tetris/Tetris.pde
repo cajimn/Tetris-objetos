@@ -1,21 +1,19 @@
-color[] colores = {
-  color(234, 230, 202), //Borde---0
-  color(128, 12, 128), //purple---1-T
-  color(230, 12, 12), //red-------2-Z
-  color(12, 230, 12), //green-----3-S
-  color(9, 239, 230), //cyan------4-I
-  color(230, 230, 9), //yellow----5-O
-  color(230, 128, 9), //orange----6-L
-  color(12, 12, 230)};//blue------7-J
-
 Figura figure;
 Figura figure2;
 Tablero tablero;
 
 ArrayList<color[]> grid = new ArrayList<color[]>();
 
-int num2 = int(random (0, 7));
-int num1 = int(random (0, 7));  
+int nminos=3;
+
+int n3=int(random (2, 4));
+int n4=int(random (4, 11));
+int n5=int(random (11, 29));
+
+int[] numero ={1,n3,n4,n5};
+
+int num1 = numero[nminos-2];
+int num2 = numero[nminos-2];
 
 // contadores e Intervalos.
 int timerPaso;
@@ -35,10 +33,11 @@ int puntaje=0;
 int nivel=1;
 
 void setup() {
-  size(504, 504); 
-  tablero= new Tablero(22, 12);
-  figure= new Figura();
-  figure2= new Figura();
+  size(650, 650);
+  background(0, 14, 56);
+  tablero= new Tablero(12, 7);
+  figure= new Figura(nminos,1);
+  figure2= new Figura(nminos,1.2);
 
   tablero.reset(); 
   //printArray(PFont.list());
@@ -53,11 +52,11 @@ void draw() {
     marcadores();    
 
     if (!gameOverBool) {
-      tablero.display();      
-      figure.display(num1,0,1,2,1,0,1);
-      figure2.display(num2,265,0,0,0,1,3);
+      tablero.display();
+      figure.display(num1, 0, 1, 2, 1, 0, 1);
+      figure2.display(num2, 360, 0, 0, 0, 1, 3);
       figure.bajar();  
-      //imprimirArrayList();
+      imprimirArrayList();
     } else {
       gameOver();
     }
@@ -105,7 +104,13 @@ void keyPressed() {
 
 void resetVariables() {
   num1 = num2;
-  num2=int(random(0, 7));
+  if(nminos==3){
+    num2=int(random(2, 4));
+  } else if(nminos==4){
+    num2=int(random(4, 11));
+  } else if(nminos==5){
+    num2=int(random(11, 29));
+  }
   figure.rot_actual = 2;
   tablero.pos_inicialX = 4;
   tablero.pos_inicialY = 0;
@@ -119,11 +124,11 @@ void resetMarcadores() {
   nivel=1;
 }
 
-/*void imprimirArrayList() {
- for (int i = 0; i < filas; i++) {
- for (int j = 0; j < columnas; j++) {
- print(grid.get(i)[j] + " ");
- }
- println();
- }
- }*/
+void imprimirArrayList() {
+  for (int i = 0; i < tablero.filas; i++) {
+    for (int j = 0; j < tablero.columnas; j++) {
+      print(grid.get(i)[j] + " ");
+    }
+    println();
+  }
+}
