@@ -103,14 +103,13 @@ class Figura {
     }
     resetVariables();
   }
-  void display(int numero, int x, int y, int stroke, int mov, int tr, int r) {
+  void display(int numero, int x, int y, int mov, int tr, int r) {
     
     fill(colores[numero], 150*r);
     figura = fig[numero-1];
     push();
-    translate(x, -largo*y);
-    stroke(stroke);
-    strokeWeight(2);
+    translate(x, y);
+    stroke(50);    
     for (int i = 0; i <= (n*n)-1; i++) {
       if ((figura[rot_actual] & (1 << (n*n)-1 - i)) != 0) {
         tablero.posX = (i%n)*ancho + tablero.pos_inicialX*ancho*mov+(ancho+50)*tr;

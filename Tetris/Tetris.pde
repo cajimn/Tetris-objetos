@@ -1,10 +1,10 @@
 Figura figure;
 Figura figure2;
 Tablero tablero;
-
+//ultimo
 ArrayList<color[]> grid = new ArrayList<color[]>();
 
-int nminos=3;
+int nminos=4;
 
 int n3=int(random (2, 4));
 int n4=int(random (4, 11));
@@ -14,6 +14,8 @@ int[] numero ={1,n3,n4,n5};
 
 int num1 = numero[nminos-2];
 int num2 = numero[nminos-2];
+
+int j=10+(nminos-4)*5;
 
 // contadores e Intervalos.
 int timerPaso;
@@ -35,7 +37,7 @@ int nivel=1;
 void setup() {
   size(650, 650);
   background(0, 14, 56);
-  tablero= new Tablero(12, 7);
+  tablero= new Tablero(12+j, 7+(j/2));
   figure= new Figura(nminos,1);
   figure2= new Figura(nminos,1.2);
 
@@ -53,8 +55,8 @@ void draw() {
 
     if (!gameOverBool) {
       tablero.display();
-      figure.display(num1, 0, 1, 2, 1, 0, 1);
-      figure2.display(num2, 360, 0, 0, 0, 1, 3);
+      figure.display(num1, 0  , 0, 1, 0, 1);
+      figure2.display(num2, 350, 75, 0, 1, 3);
       figure.bajar();  
       imprimirArrayList();
     } else {

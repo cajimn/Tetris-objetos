@@ -1,10 +1,16 @@
 void marcadores() {
   background(0, 14, 56);
   push();
-  fill(0, 0, 255);
+  textAlign(CENTER,0);
+  fill(0, 255, 0);
+  push();
+  translate(480, 40);
+  textSize(20);
+  text("Next figure", 0, 0);
+  pop();
   translate(width*10/13.3, height/2);
   textFont(f);
-  textAlign(CENTER,0);
+  
 
   stroke(75, 54, 33);
   strokeWeight(5);
