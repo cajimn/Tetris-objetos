@@ -27,12 +27,14 @@ class Tablero {
         strokeWeight(1);
 
         if (tipo==1) {
-          line(forma1.ancho, i*forma1.largo, j*forma1.ancho, i*forma1.largo);//horizontales
-          line(j*forma1.ancho, 0, j*forma1.ancho, i*forma1.largo);//verticales
+          line(forma1.ancho, i*forma1.largo, j*forma1.ancho, i*forma1.largo);//horizontales +forma1.ancho*3
+          line(j*forma1.ancho, forma1.largo, j*forma1.ancho, i*forma1.largo);//verticales
         } else if (tipo ==2) {            
           noFill();  
           triangle(j*forma1.ancho, i*forma1.largo+forma1.largo, j*forma1.ancho+forma1.ancho/2, i*forma1.largo, j*forma1.ancho+forma1.ancho, i*forma1.largo+forma1.largo);
-        }
+        } else if (tipo ==3) {            
+          noFill();  
+          ellipse(j*forma1.ancho+forma1.ancho/2, i*forma1.largo+forma1.largo/2, forma1.ancho, forma1.largo);}
 
 
         pop();
@@ -45,7 +47,10 @@ class Tablero {
         } else if (grid.get(i)[j] != 0 && tipo==2) {
           fill(grid.get(i)[j]);
           triangle(j*forma1.ancho, i*forma1.largo+forma1.largo, j*forma1.ancho+forma1.ancho/2, i*forma1.largo, j*forma1.ancho+forma1.ancho, i*forma1.largo+forma1.largo);//triangle(posX, posY+largo, posX+ancho/2, posY, posX+ancho, posY+largo);
-        }
+        } else if (grid.get(i)[j] != 0 && tipo==3) {
+          fill(grid.get(i)[j]);
+          ellipse(j*forma1.ancho+forma1.ancho/2, i*forma1.largo+forma1.ancho/2, forma1.ancho, forma1.largo);
+      }
       }
     }
     pop();
@@ -61,6 +66,7 @@ class Tablero {
       gameOverBool = i < (columnas - 1);
       if (!gameOverBool) { 
         forma1.nueva();
+        
       }
     }
   }

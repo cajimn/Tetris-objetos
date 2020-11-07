@@ -1,7 +1,7 @@
 color [] colores= {  
   color(234, 230, 202), //Borde---0
 //n=2
-  color(12, 230, 12), //green-----1-d
+  color(9, 239, 230), //green-----1-d
 //n=3
   color(12, 12, 230),//blue------2-t1
   color(230, 230, 9), //yellow----3-t3
@@ -23,7 +23,7 @@ color [] colores= {
   color(12, 12, 230),//blue------17-p7
   color(128, 12, 128), //purple---18-p8
   color(230, 12, 12), //red-------19-p9
-  color(12, 230, 12), //green-----20-p10
+  color(12, 12, 230), //green-----20-p10
   color(9, 239, 230), //cyan------21-p11
   color(230, 230, 9),//yellow----22-p12
   color(230, 128, 9),//orange----23-p13

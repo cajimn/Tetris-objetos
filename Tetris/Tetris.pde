@@ -1,11 +1,21 @@
+import processing.sound.*;
+SoundFile file;
+PImage fondo1;
+
 Forma forma1;
 Forma forma2;
+
+Forma forma3;
+Forma forma4;
+Forma forma5;
+Forma forma6;
+
 Tablero tablero;
 
 ArrayList<color[]> grid = new ArrayList<color[]>();
 
-int nminos=4;
-int tipo=2;
+int nminos=5;
+int tipo=3;
 
 int n3=int(random (2, 4));
 int n4=int(random (4, 11));
@@ -28,24 +38,32 @@ int intervaloFilaCompleta = 10;
 PFont f;
 
 // banderas
-
+boolean controlsave = true;
 boolean startgame = false;
 boolean gameOverBool = false;
 
 //Niveles
 int puntaje=0;
 int nivel=1;
+int minoi;
+int tipoj;
 
 void setup() {
-  size(650, 650);
+  size(1000, 650);
   background(0, 14, 56);
-  
+  file = new SoundFile(this, "Tetris.mp3");
+  file.play();
+  fondo1=loadImage("fondo1.jpg");
   tablero= new Tablero(12+j, 7+(j/2));
-  forma1= new Forma(1);
-  forma2= new Forma(1.2);
+  forma1= new Forma(1,nminos);
+  forma2= new Forma(1.2,nminos);
+  forma3= new Forma(1,2);
+  forma4= new Forma(1,3);
+  forma5= new Forma(1,4);
+  forma6= new Forma(1,5);
 
+  tablero.reset();
 
-  tablero.reset(); 
   //printArray(PFont.list());
   f = createFont("Consolas Bold", 24);
 }
@@ -53,27 +71,31 @@ void setup() {
 void draw() {
 
   inicio();
-
+ 
   if (startgame) {
     marcadores();    
-
-    if (!gameOverBool) {
+    eleccion();
+    if (!gameOverBool) {      
       tablero.display(tipo);
       forma1.display(num1, 0, 0, 1, 0, 1);
       forma2.display(num2, 350, 75, 0, 1, 3);
       forma1.bajar(); 
       imprimirArrayList();
     } else {
-      gameOver();
+      if (controlsave) {
+        saveData("Carlos", puntaje);
+        controlsave = !controlsave;
+        gameOver();
+      }
+      showpuntajes();
     }
-  } /*else if(!gameOverBool){
-   pausa();
-   }*/
+  }
 }
 
 void keyPressed() {
   if (keyCode == ENTER) {
     startgame =true;
+    controlsave = true;
   }
   if (!gameOverBool) {
     if (key == 'a' || keyCode == LEFT) {
@@ -109,6 +131,33 @@ void keyPressed() {
     }
   }
 }
+
+JSONArray loadData() {
+  JSONObject json = loadJSONObject("data/Puntajes.json");
+  JSONArray scores = json.getJSONArray("Top");
+  return scores;
+}
+
+void saveData(String nombre, int puntaje) {
+  JSONObject json;
+  JSONArray scores = loadData();
+  for (int i = 0; i<scores.size(); i++) {
+    JSONObject persona = scores.getJSONObject(i);
+    int puntajem = persona.getInt("puntaje");
+    if (puntaje>puntajem) {
+      String nombretemp = persona.getString("nombre");
+      int puntajetemp = persona.getInt("puntaje");
+      persona.setInt("puntaje", puntaje);
+      persona.setString("nombre", nombre);
+      nombre = nombretemp;
+      puntaje=puntajetemp;
+    }
+  }
+  json= new JSONObject();
+  json.setJSONArray("Top", scores);
+  saveJSONObject(json, "data/Puntajes.json");
+}
+
 void niveles() {
   int j=1;
   for (int i=0; i<=20; i++) {    
