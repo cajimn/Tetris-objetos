@@ -1,7 +1,45 @@
+void inicio() {
+  
+  push();
+  background(0, 14, 56);
+  translate(width/2, height*3/4);
+  textFont(f);
+  textAlign(CENTER, CENTER);
+
+  stroke(75, 54, 33);
+  strokeWeight(5);
+  fill(255, 230, 0);
+  rectMode(CENTER);
+  rect(0, 4, 240, 70, 10);
+
+  fill(0, 0, 255);
+  textSize(20);
+  text("Press ENTER to start", 0, 0);
+  pop();
+
+  botones_inicio();
+  //eleccion();
+} 
+
+
+void pausa() {
+  startgame=false;
+  push();
+  background(0, 14, 56,10);
+  rectMode(CENTER);
+  rect(0, 4, 240, 70, 10);
+  fill(255);
+  textSize(30);
+  text("PAUSE", 0, 0);
+
+
+  pop();
+}
+
 void marcadores() {
   background(0, 14, 56);
   push();
-  textAlign(CENTER,0);
+  textAlign(CENTER, 0);
   fill(0, 255, 0);
   push();
   translate(480, 40);
@@ -10,7 +48,7 @@ void marcadores() {
   pop();
   translate(width*10/13.3, height/2);
   textFont(f);
-  
+
 
   stroke(75, 54, 33);
   strokeWeight(5);
@@ -36,23 +74,7 @@ void marcadores() {
   pop();
 }
 
-void inicio() {
-  push();
-  translate(width/2, height/2);
-  textFont(f);
-  textAlign(CENTER, CENTER);
 
-  stroke(75, 54, 33);
-  strokeWeight(5);
-  fill(255, 230, 0);
-  rectMode(CENTER);
-  rect(0, 4, 240, 70, 10);
-
-  fill(0, 0, 255);
-  textSize(18);
-  text("Press ENTER to start", 0, 0);
-  pop();
-}
 
 void gameOver() {
   background(0, 14, 56);

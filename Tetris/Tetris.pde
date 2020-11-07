@@ -1,16 +1,17 @@
-Figura figure;
-Figura figure2;
+Forma forma1;
+Forma forma2;
 Tablero tablero;
-//ultimo
+
 ArrayList<color[]> grid = new ArrayList<color[]>();
 
 int nminos=4;
+int tipo=2;
 
 int n3=int(random (2, 4));
 int n4=int(random (4, 11));
 int n5=int(random (11, 29));
 
-int[] numero ={1,n3,n4,n5};
+int[] numero ={1, n3, n4, n5};
 
 int num1 = numero[nminos-2];
 int num2 = numero[nminos-2];
@@ -27,6 +28,7 @@ int intervaloFilaCompleta = 10;
 PFont f;
 
 // banderas
+
 boolean startgame = false;
 boolean gameOverBool = false;
 
@@ -37,9 +39,11 @@ int nivel=1;
 void setup() {
   size(650, 650);
   background(0, 14, 56);
+  
   tablero= new Tablero(12+j, 7+(j/2));
-  figure= new Figura(nminos,1);
-  figure2= new Figura(nminos,1.2);
+  forma1= new Forma(1);
+  forma2= new Forma(1.2);
+
 
   tablero.reset(); 
   //printArray(PFont.list());
@@ -54,15 +58,17 @@ void draw() {
     marcadores();    
 
     if (!gameOverBool) {
-      tablero.display();
-      figure.display(num1, 0  , 0, 1, 0, 1);
-      figure2.display(num2, 350, 75, 0, 1, 3);
-      figure.bajar();  
+      tablero.display(tipo);
+      forma1.display(num1, 0, 0, 1, 0, 1);
+      forma2.display(num2, 350, 75, 0, 1, 3);
+      forma1.bajar(); 
       imprimirArrayList();
     } else {
       gameOver();
     }
-  }
+  } /*else if(!gameOverBool){
+   pausa();
+   }*/
 }
 
 void keyPressed() {
@@ -71,54 +77,47 @@ void keyPressed() {
   }
   if (!gameOverBool) {
     if (key == 'a' || keyCode == LEFT) {
-      if (!figure.colisionIzquierda()) 
+      if (!forma1.colisionIzquierda()) 
         tablero.pos_inicialX--;
     } else if (key == 'd' || keyCode == RIGHT) {
-      if (!figure.colisionDerecha()) 
+      if (!forma1.colisionDerecha()) 
         tablero.pos_inicialX++;
     } else if (key == 's' || keyCode == DOWN) {
-      if (!figure.colisionAbajo()) 
+      if (!forma1.colisionAbajo()) 
         tablero.darPaso();
       puntaje+=1;
     } else if (key == ' ') {
-      if (!figure.colisionAbajo()) {
+      if (!forma1.colisionAbajo()) {
         tablero.darPaso();
         push();
-        if (!figure.colisionAbajo()) {
+        if (!forma1.colisionAbajo()) {
           timerPaso=10;
         }
         pop();
       }
     } else if (key == 'w' || keyCode == UP) {
-      figure.rot_anterior = figure.rot_actual;
-      figure.rot_actual = (figure.rot_actual + 1)%4;
+      forma1.rot_anterior = forma1.rot_actual;
+      forma1.rot_actual = (forma1.rot_actual + 1)%4;
       // Agregada esta condición para evitar bugs en las rotaciones cerca de un borde.
-      if (figure.colisionRotacion()) figure.rot_actual = figure.rot_anterior;
-    }
+      if (forma1.colisionRotacion()) forma1.rot_actual = forma1.rot_anterior;
+    } else if (key=='p') startgame=false;
   } else {
     if (keyCode == ENTER) {
-      tablero.reset();
-      resetVariables();
+      forma1.nueva();
+      tablero.reset();      
       resetMarcadores();
     }
   }
 }
-
-void resetVariables() {
-  num1 = num2;
-  if(nminos==3){
-    num2=int(random(2, 4));
-  } else if(nminos==4){
-    num2=int(random(4, 11));
-  } else if(nminos==5){
-    num2=int(random(11, 29));
+void niveles() {
+  int j=1;
+  for (int i=0; i<=20; i++) {    
+    if (puntaje >=j*300) {
+      j++;
+      nivel=j;      
+      timerPaso-=20;
+    }
   }
-  figure.rot_actual = 2;
-  tablero.pos_inicialX = 4;
-  tablero.pos_inicialY = 0;
-  gameOverBool = false;
-  timerPaso = millis();
-  timerFilaCompleta = millis();
 }
 
 void resetMarcadores() {

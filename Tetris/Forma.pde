@@ -1,17 +1,18 @@
-class Figura {
+class Forma {
 
   float largo;
   float ancho;
   int rot_actual = 2;
   int rot_anterior = 1;
   int n;
-
   int [] figura;
+  int shape;
 
-  Figura(int nminos, float escala) {
+  Forma( float escala) {
     largo=(630/(tablero.filas))*escala;
     ancho=(315/tablero.columnas)*escala;
     n=nminos;
+    shape=tipo;
   }
 
 
@@ -101,28 +102,47 @@ class Figura {
         grid.get(posMY)[posMX] = colores[num1];
       }
     }
-    resetVariables();
+    num1 = num2;
+    if (nminos==3) {
+      num2=int(random(2, 4));
+    } else if (nminos==4) {
+      num2=int(random(4, 11));
+    } else if (nminos==5) {
+      num2=int(random(11, 29));
+    }
+    rot_actual = 2;
+    tablero.pos_inicialX = 4;
+    tablero.pos_inicialY = 0;
+    gameOverBool = false;
+    timerPaso = millis();
+    timerFilaCompleta = millis();
+    //resetVariables();
   }
   void display(int numero, int x, int y, int mov, int tr, int r) {
-    
+
     fill(colores[numero], 150*r);
     figura = fig[numero-1];
     push();
     translate(x, y);
-    stroke(50);    
+    stroke(50);
     for (int i = 0; i <= (n*n)-1; i++) {
       if ((figura[rot_actual] & (1 << (n*n)-1 - i)) != 0) {
         tablero.posX = (i%n)*ancho + tablero.pos_inicialX*ancho*mov+(ancho+50)*tr;
         tablero.posY = (floor(i/n)) * largo + tablero.pos_inicialY*largo*mov+largo*tr-largo;
-        rect(tablero.posX, tablero.posY, ancho, largo, 2);
-      } /*else {
-       tablero.posX = (i%n)*ancho + pos_inicialX*ancho;
-       tablero.posY = (floor(i/n)) * largo + pos_inicialY*largo;
-       push();
-       fill(colores[0]);
-       rect(tablero.posX, tablero.posY, ancho, largo);
-       pop();
-       }*/
+        if (shape==1) {
+          rect(tablero.posX, tablero.posY, ancho, largo, 2);
+        } else if (shape==2) {
+          triangle(tablero.posX, tablero.posY+largo, tablero.posX+ancho/2, tablero.posY, tablero.posX+ancho, tablero.posY+largo);
+        }
+        /*else {
+         tablero.posX = (i%n)*ancho + pos_inicialX*ancho;
+         tablero.posY = (floor(i/n)) * largo + pos_inicialY*largo;
+         push();
+         fill(colores[0]);
+         rect(tablero.posX, tablero.posY, ancho, largo);
+         pop();
+         }*/
+      }
     }
     pop();
     niveles();

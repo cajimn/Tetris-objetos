@@ -14,24 +14,37 @@ class Tablero {
     filas=f;
   }
 
-  void display() {
+  void display(int tipo) {
+    
     push();
     strokeWeight(2);
-    translate(0, -figure.largo);
+    translate(0, -forma1.largo);
     for (int i=0; i < filas; i++) {
       for (int j=0; j < columnas; j++) {
-        push();
+
+        push();        
         stroke(100);
         strokeWeight(1);
-        line(figure.ancho, i*figure.largo, j*figure.ancho, i*figure.largo);//horizontales
-        line(j*figure.ancho, figure.largo, j*figure.ancho, i*figure.largo);//verticales
+
+        if (tipo==1) {
+          line(forma1.ancho, i*forma1.largo, j*forma1.ancho, i*forma1.largo);//horizontales
+          line(j*forma1.ancho, 0, j*forma1.ancho, i*forma1.largo);//verticales
+        } else if (tipo ==2) {            
+          noFill();  
+          triangle(j*forma1.ancho, i*forma1.largo+forma1.largo, j*forma1.ancho+forma1.ancho/2, i*forma1.largo, j*forma1.ancho+forma1.ancho, i*forma1.largo+forma1.largo);
+        }
+
+
         pop();
         if (j == 0 || j == columnas - 1 || i == filas - 1) {
           fill(colores[0]);
-          rect(j*figure.ancho, i*figure.largo, figure.ancho, figure.largo, 4);
-        } else if (grid.get(i)[j] != 0) {
+          rect(j*forma1.ancho, i*forma1.largo, forma1.ancho, forma1.largo, 2);
+        } else if (grid.get(i)[j] != 0 && tipo==1) {
           fill(grid.get(i)[j]);
-          rect(j*figure.ancho, i*figure.largo, figure.ancho, figure.largo, 4);
+          rect(j*forma1.ancho, i*forma1.largo, forma1.ancho, forma1.largo, 2);
+        } else if (grid.get(i)[j] != 0 && tipo==2) {
+          fill(grid.get(i)[j]);
+          triangle(j*forma1.ancho, i*forma1.largo+forma1.largo, j*forma1.ancho+forma1.ancho/2, i*forma1.largo, j*forma1.ancho+forma1.ancho, i*forma1.largo+forma1.largo);//triangle(posX, posY+largo, posX+ancho/2, posY, posX+ancho, posY+largo);
         }
       }
     }
@@ -39,7 +52,7 @@ class Tablero {
   }
 
   void darPaso() {
-    if (!figure.colisionAbajo()) {
+    if (!forma1.colisionAbajo()) {
       pos_inicialY++;
     } else {
       int i;
@@ -47,7 +60,7 @@ class Tablero {
       }
       gameOverBool = i < (columnas - 1);
       if (!gameOverBool) { 
-        figure.nueva();
+        forma1.nueva();
       }
     }
   }
@@ -66,6 +79,7 @@ class Tablero {
       }
     }
   }
+
 
 
   void reset() {
