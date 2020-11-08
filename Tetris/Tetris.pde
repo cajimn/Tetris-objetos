@@ -9,15 +9,13 @@ Forma forma3;
 Forma forma4;
 Forma forma5;
 Forma forma6;
-Forma forma7;
-Forma forma8;
 
 Tablero tablero;
 
 ArrayList<color[]> grid = new ArrayList<color[]>();
 
-int nminos=5;
-int tipo=3;
+int nminos=5;//tamaño de tablero 
+int tipo=1;
 
 int n3=int(random (2, 4));
 int n4=int(random (4, 11));
@@ -49,14 +47,13 @@ boolean mostrarpuntajes = false;
 //Niveles
 int puntaje=0;
 int nivel=1;
-int minoi;
-int tipoj;
+
 
 void setup() {
   size(1000, 650);
   background(0, 14, 56);
   file = new SoundFile(this, "Tetris.mp3");
-  file.amp(0.3);
+  file.amp(0.1);
   file.play();
   fondo1=loadImage("fondo1.jpg");
   tablero= new Tablero(12+j, 7+(j/2));
@@ -77,35 +74,18 @@ void setup() {
 void draw() {
 
   inicio();
-  if (eleccion) {
-    tablero= new Tablero(12+j, 7+(j/2));
-    forma1= new Forma(1);
-    forma2= new Forma(1.2);
-    forma3= new Forma(1);
-    forma4= new Forma(1);
-    forma5= new Forma(1);
-    forma6= new Forma(1);
- 
-    eleccion=!eleccion;
-  }
 
   if (startgame) {
-
-    forma1.bajar();
-
     marcadores();    
-    //eleccion();
+
     if (!gameOverBool) { 
-      //forma1.debug(nminos,tipo);
       tablero.display(tipo);
       forma1.display(num1, 0, 0, 1, 0, 1, nminos, tipo);
       forma2.display(num2, 350, 75, 0, 1, 3, nminos, tipo);
       forma1.bajar();
       imprimirArrayList();
-    } else {
-      
-        gameOver();
-      
+    } else {      
+        gameOver();      
     }
   }
 }
@@ -172,7 +152,7 @@ void saveData(String nombre, int puntaje) {
       puntaje=puntajetemp;
     }
   }
-  json= new JSONObject();
+  json= new JSONObject(); 
   json.setJSONArray("Top", scores);
   saveJSONObject(json, "data/Puntajes.json");
 }

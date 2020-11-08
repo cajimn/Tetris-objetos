@@ -92,7 +92,7 @@ void marcadores() {
 void gameOver() {
   background(0, 14, 56);
   push();
-  translate(width/2, height/5);
+  translate(width*0.75, height/5);
   textFont(f);
   textAlign(CENTER, CENTER);
 

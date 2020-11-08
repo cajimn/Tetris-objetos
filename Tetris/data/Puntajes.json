@@ -11,42 +11,42 @@
   },
   {
     "puesto": 3,
-    "puntaje": 465,
+    "puntaje": 475,
     "nombre": "Carlos"
   },
   {
     "puesto": 4,
+    "puntaje": 465,
+    "nombre": "Carlos"
+  },
+  {
+    "puesto": 5,
     "puntaje": 427,
     "nombre": "carlos"
   },
   {
-    "puesto": 5,
+    "puesto": 6,
     "puntaje": 419,
     "nombre": "Carlos"
   },
   {
-    "puesto": 6,
+    "puesto": 7,
     "puntaje": 418,
     "nombre": "Carlos"
   },
   {
-    "puesto": 7,
-    "puntaje": 402,
-    "nombre": "Carlos"
-  },
-  {
     "puesto": 8,
-    "puntaje": 389,
+    "puntaje": 412,
     "nombre": "Carlos"
   },
   {
     "puesto": 9,
-    "puntaje": 389,
+    "puntaje": 402,
     "nombre": "Carlos"
   },
   {
     "puesto": 10,
-    "puntaje": 338,
+    "puntaje": 389,
     "nombre": "Carlos"
   }
 ]}
