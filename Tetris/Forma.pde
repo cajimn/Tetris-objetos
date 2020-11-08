@@ -154,7 +154,6 @@ void nueva() {
   gameOverBool = false;
   timerPaso = millis();
   timerFilaCompleta = millis();
-  //resetVariables();
 }
 
 }
