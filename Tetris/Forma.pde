@@ -8,14 +8,16 @@ class Forma {
   int [] figura;
   int shape;
 
-  Forma(float escala,int nminos) {
+  Forma(float escala) {
     largo=(630/(tablero.filas))*escala;
     ancho=(315/tablero.columnas)*escala;
-    n=nminos;
-    shape=tipo;
-  }
 
-  void display(int numero, int x, float y, int mov, int tr, int r) {
+  }
+  
+
+  void display(int numero, int x, float y, int mov, int tr, int r, int nms, int tips) {
+    n=nms;
+    shape = tips;
     fill(colores[numero], 150*r);
     figura = fig[numero-1];
     push();
@@ -24,8 +26,7 @@ class Forma {
     for (int i = 0; i <= (n*n)-1; i++) {
       if ((figura[rot_actual] & (1 << (n*n)-1 - i)) != 0) {
         tablero.posX = (i%n)*ancho + tablero.pos_inicialX*ancho*mov+(ancho+50)*tr;
-        tablero.posY = (floor(i/n)) * largo + tablero.pos_inicialY*largo*mov+largo*tr-largo;
-        
+        tablero.posY = (floor(i/n)) * largo + tablero.pos_inicialY*largo*mov+largo*tr-largo;        
         if (shape==1) {          
           rect(tablero.posX, tablero.posY, ancho, largo, 2);
         } else if (shape==2) {

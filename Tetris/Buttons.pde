@@ -101,6 +101,8 @@ void mousePressed() {
       buttonn3 = false;
       buttonn4 = false;// todos los demás botone se apagan
       buttonn5 = false;
+      nminos=2;
+      eleccion =true;
     }
   }
   if ((mouseX > x+150) && (mouseX< x+150+w)&&(mouseY >y*1.5 )&&(mouseY < y*1.5 +w)) {
@@ -109,6 +111,8 @@ void mousePressed() {
       buttonn2 = false;
       buttonn4 = false;// todos los demás botone se apagan
       buttonn5 = false;
+      nminos=3;
+      eleccion =true;
     }
   }
   if ((mouseX > x+300) && (mouseX< x+300+w)&&(mouseY >y*1.5 )&&(mouseY < y*1.5 +w)) {
@@ -117,6 +121,8 @@ void mousePressed() {
       buttonn3 = false;
       buttonn2 = false;// todos los demás botone se apagan
       buttonn5 = false;
+      nminos=4;
+      eleccion =true;
     }
   }
   if ((mouseX > x+450) && (mouseX< x+450+w)&&(mouseY >y*1.5 )&&(mouseY < y*1.5 +w)) {
@@ -125,6 +131,8 @@ void mousePressed() {
       buttonn3 = false;
       buttonn4 = false;// todos los demás botone se apagan
       buttonn2 = false;
+      nminos=5;
+      eleccion =true;
     }
   }
   ///////////////////////////////////////////////////////////////////////////////////
@@ -133,6 +141,8 @@ void mousePressed() {
       buttont1 = true; // se prende el boton presionado
       buttont2 = false;
       buttont3 = false;// todos los demás botone se apagan
+      tipo = 1;
+      eleccion =true;
     }
   }
   if ((mouseX > x+225) && (mouseX< x+225+w)&&(mouseY >y*3 )&&(mouseY < y*3 +w)) {
@@ -140,6 +150,8 @@ void mousePressed() {
       buttont2 = true; // se prende el boton presionado
       buttont1 = false;
       buttont3 = false;// todos los demás botone se apagan
+      tipo=2;
+      eleccion =true;
     }
   }
   if ((mouseX > x+375) && (mouseX< x+375+w)&&(mouseY >y*3 )&&(mouseY < y*3 +w)) {
@@ -147,30 +159,8 @@ void mousePressed() {
       buttont3 = true; // se prende el boton presionado
       buttont2 = false;
       buttont1 = false;// todos los demás botone se apagan
+      tipo=3;
+      eleccion =true;
     }
-  }
-}
-
-void eleccion() {
-  if (buttonn2 == true) {
-    minoi=2;
-  } 
-  if (buttonn3 == true) {
-    minoi=3;
-  } 
-  if (buttonn4 == true) {
-    minoi=4;
-  }  
-  if (buttonn5 == true) {
-    minoi=5;
-  }
-  if (buttont1 == true) {
-    tipoj=2;
-  } 
-  if (buttont2 == true) {
-    tipoj=3;
-  } 
-  if (buttont3 == true) {
-    tipoj=4;
   }
 }

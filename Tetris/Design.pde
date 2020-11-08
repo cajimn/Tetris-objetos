@@ -21,10 +21,10 @@ void inicio() {
   botones_inicio();
   //eleccion();
   push();
-  forma3.display(1, x-32, y*1.75, 0, 1, 3);
-  forma4.display(3, x+110, y*1.5, 0, 1, 3);
-  forma5.display(5, x+245, y*1.75, 0, 1, 3);
-  forma6.display(20, x+375, y*1.4, 0, 1, 3);
+  forma3.display(1, x-32, y*1.75, 0, 1, 3,nminos,tipo);
+  forma4.display(3, x+110, y*1.5, 0, 1, 3,nminos,tipo);
+  forma5.display(5, x+245, y*1.75, 0, 1, 3,nminos,tipo);
+  forma6.display(20, x+375, y*1.4, 0, 1, 3,nminos,tipo);
   noFill();
   stroke(255);
   rect(x+75+w/2-forma1.ancho, 3*y+w/2-forma1.largo, forma1.ancho*2,forma1.largo*2);
@@ -49,6 +49,7 @@ void pausa() {
 }
 
 void marcadores() {
+  
   background(0, 14, 56);
   push();
   textAlign(CENTER, 0);
@@ -125,6 +126,8 @@ void gameOver() {
 
 
   pop();
+  
+  if(mostrarpuntajes==true)showpuntajes();
 }
 
 void showpuntajes(){
