@@ -1,8 +1,8 @@
 void inicio() {
-  
+
   push();
   background(0, 14, 56);
-  image(fondo1,0,0,width,height);
+  image(fondo1, 0, 0, width, height);
   translate(width/2, height*3/4);
   textFont(f);
   textAlign(CENTER, CENTER);
@@ -21,14 +21,14 @@ void inicio() {
   botones_inicio();
   //eleccion();
   push();
-  forma3.display(1, x-32, y*1.75, 0, 1, 3,nminos,tipo);
-  forma4.display(3, x+110, y*1.5, 0, 1, 3,nminos,tipo);
-  forma5.display(5, x+245, y*1.75, 0, 1, 3,nminos,tipo);
-  forma6.display(20, x+375, y*1.4, 0, 1, 3,nminos,tipo);
+  forma3.display(1, x-32, y*1.75, 0, 1, 3, 2, tipo);
+  forma4.display(3, x+110, y*1.5, 0, 1, 3, 3, tipo);
+  forma5.display(5, x+245, y*1.75, 0, 1, 3, 4, tipo);
+  forma6.display(20, x+375, y*1.4, 0, 1, 3, 5, tipo);
   noFill();
   stroke(255);
-  rect(x+75+w/2-forma1.ancho, 3*y+w/2-forma1.largo, forma1.ancho*2,forma1.largo*2);
-  triangle(x+225+w/2-forma1.ancho, 3*y+w/2+forma1.ancho,x+225+forma1.ancho+w/2-forma1.ancho, 3*y-2*forma1.largo+w/2+forma1.ancho, x+225+2*forma1.ancho+w/2-forma1.ancho, 3*y+w/2+forma1.ancho);
+  rect(x+75+w/2-forma1.ancho, 3*y+w/2-forma1.largo, forma1.ancho*2, forma1.largo*2);
+  triangle(x+225+w/2-forma1.ancho, 3*y+w/2+forma1.ancho, x+225+forma1.ancho+w/2-forma1.ancho, 3*y-2*forma1.largo+w/2+forma1.ancho, x+225+2*forma1.ancho+w/2-forma1.ancho, 3*y+w/2+forma1.ancho);
   ellipse(x+375+w/2, 3*y+w/2, forma1.ancho*2, forma1.largo*2);
   pop();
 } 
@@ -37,7 +37,7 @@ void inicio() {
 void pausa() {
   startgame=false;
   push();
-  background(0, 14, 56,10);
+  background(0, 14, 56, 10);
   rectMode(CENTER);
   rect(0, 4, 240, 70, 10);
   fill(255);
@@ -49,7 +49,7 @@ void pausa() {
 }
 
 void marcadores() {
-  
+
   background(0, 14, 56);
   push();
   textAlign(CENTER, 0);
@@ -123,37 +123,40 @@ void gameOver() {
   textSize(30.5);
   text("¡Try Again!", 0, 20);
   text("Press Enter", 0, 50);
-
+  if (controlsave) {
+    saveData("Carlos", puntaje);
+    controlsave = !controlsave;
+  }
+  
 
   pop();
-  
-  if(mostrarpuntajes==true)showpuntajes();
+
+showpuntajes();
 }
 
-void showpuntajes(){
+void showpuntajes() {
   push();
-  translate(width/2, height/5);
+  //translate(width/4, height/4);
   textFont(f);
   textAlign(CENTER, CENTER);
 
   stroke(75, 54, 33);
   strokeWeight(5);
   fill(255, 240, 0);
-  rectMode(CENTER);
-  rect(0, 0, 240, 500, 10);
+  rectMode(CORNER);
+  rect(50, 50, 450,height-100, 10);
 
   fill(40);
   textSize(35);
-  
+
   JSONArray scores = loadData();
-  for (int i = 0; i<scores.size(); i++) {
+  for (int i = 0; i<5; i++) {
     JSONObject persona = scores.getJSONObject(i);
     int puntajem = persona.getInt("puntaje");
     String nombre = persona.getString("nombre");
-    text("nombre: "+nombre, 0, 50*i);
-    text("puntaje: "+puntajem, 0,20+50*i);
+    text("nombre: "+nombre, 250, 100+100*i);
+    text("puntaje: "+puntajem,250, 150+100*i);
   }
-   
+
   pop();
-  
 }

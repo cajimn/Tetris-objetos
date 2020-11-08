@@ -103,11 +103,9 @@ void draw() {
       forma1.bajar();
       imprimirArrayList();
     } else {
-      if (controlsave) {
-        saveData("Carlos", puntaje);
-        controlsave = !controlsave;
+      
         gameOver();
-      }
+      
     }
   }
 }
