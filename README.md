@@ -31,9 +31,9 @@ La base del juego fue el uso de bitwise para crear las figuras y verificar las c
 
 ![](Images/juego.png)
 
-![](Images/juego2.png)
-
 ![](Images/juego3.png)
+
+![](Images/inicio2.png)
 
 ## Gameover
 > ## Acá podemos ver como se guardan los marcadores en el menú de gameover
