@@ -21,7 +21,7 @@ La base del juego fue el uso de bitwise para crear las figuras y verificar las c
 
 ![](Images/iniciocuadro.png)
 
-![](images/iniciotriangulo.png)
+![](Images/iniciotriangulo.png)
 
 ![](Images/iniciocirculo.png)
 
