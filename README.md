@@ -19,22 +19,22 @@ La base del juego fue el uso de bitwise para crear las figuras y verificar las c
 
 > ## Contiene los cambios de minos y formas
 
-![](Images/menucuadro.JPG)
+![](Images/menucuadro.png)
 
-![](images/menutriangulo.JPG)
+![](images/menutriangulo.png)
 
-![](Images/menucirculo.JPG)
+![](Images/menucirculo.png)
 
 ## Juego
 
 > ## se ve como se cambia el tablero según la forma y además el tamaño segun el mino elegido
 
-![](images/juego.JPG)
+![](images/juego.png)
 
 ## Gameover
 > ## Acá podemos ver como se guardan los marcadores en el menú de gameover
 
-![](Images/gameover.JPG)
+![](Images/gameover.png)
 
 ## :hear_no_evil: instrucciones :hear_no_evil:
 
