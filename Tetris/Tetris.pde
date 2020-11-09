@@ -14,7 +14,7 @@ Tablero tablero;
 
 ArrayList<color[]> grid = new ArrayList<color[]>();
 
-int nminos=5;//tamaño de tablero 
+int nminos=2;//tamaño de tablero 
 int tipo=1;
 
 int n3=int(random (2, 4));
@@ -513,7 +513,7 @@ void showpuntajes() {
 color [] colores= {  
   color(234, 230, 202), //Borde---0
 //n=2
-  color(9, 239, 230), //green-----1-d
+  color(12, 230, 12), //green-----1-d
 //n=3
   color(12, 12, 230),//blue------2-t1
   color(230, 230, 9), //yellow----3-t3
