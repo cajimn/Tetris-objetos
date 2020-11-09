@@ -19,11 +19,11 @@ La base del juego fue el uso de bitwise para crear las figuras y verificar las c
 
 > ## Contiene los cambios de minos y formas
 
-![](images/menucuadro.JPG)
+![](Images/menucuadro.JPG)
 
 ![](images/menutriangulo.JPG)
 
-![](images/menucirculo.JPG)
+![](Images/menucirculo.JPG)
 
 ## Juego
 
@@ -34,7 +34,7 @@ La base del juego fue el uso de bitwise para crear las figuras y verificar las c
 ## Gameover
 > ## Acá podemos ver como se guardan los marcadores en el menú de gameover
 
-![](images/gameover.JPG)
+![](Images/gameover.JPG)
 
 ## :hear_no_evil: instrucciones :hear_no_evil:
 
